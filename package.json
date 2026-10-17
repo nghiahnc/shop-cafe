@@ -1,0 +1,60 @@
+{
+  "name": "shop-cafe-dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3002",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3002",
+    "db:migrate": "node db/migrate.mjs",
+    "db:seed": "node db/seed.mjs",
+    "db:seed-demo": "node db/seed-demo.mjs",
+    "db:verify": "node db/verify.mjs",
+    "test:neon": "node tests/neon.mjs && node tests/storefront.mjs",
+    "build:cloudflare": "node scripts/cloudflare.mjs build",
+    "preview:cloudflare": "node scripts/cloudflare.mjs preview",
+    "deploy:cloudflare": "node scripts/cloudflare.mjs deploy --secrets-file .env.worker-secrets.local",
+    "secrets:cloudflare": "node scripts/prepare-worker-secrets.mjs",
+    "secrets:vercel": "node scripts/vercel-secrets.mjs",
+    "deploy:vercel": "npx --yes vercel@64.2.0 deploy --prod"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1152.0",
+    "@aws-sdk/s3-presigned-post": "3.1152.0",
+    "@aws-sdk/s3-request-presigner": "3.1152.0",
+    "@neon/config": "^1.9.1",
+    "@neon/env": "^1.6.2",
+    "@opennextjs/cloudflare": "1.20.12",
+    "@smithy/fetch-http-handler": "5.8.0",
+    "@vercel/functions": "3.10.1",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "next": "16.4.1",
+    "next-auth": "^5.0.0-beta.32",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "stripe": "^23.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.15.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "undici": "6.29.1",
+    "wrangler": "4.151.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261012.1": true
+  },
+  "overrides": {
+    "@node-minify/core": {
+      "glob": "10.5.0"
+    }
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

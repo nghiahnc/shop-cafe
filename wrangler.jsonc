@@ -1,0 +1,40 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "shop-cafe",
+	"account_id": "a2b28245048860a6e4e7ca1cda836b92",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-10-15",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"workers_dev": true,
+	"preview_urls": false,
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "shop-cafe"
+		}
+	],
+	"vars": {
+		"APP_RUNTIME": "cloudflare",
+		"AUTH_URL": "https://shop-cafe.lumora-studio.workers.dev",
+		"UPLOAD_BUCKET": "cafe-uploads",
+		"STRIPE_CHECKOUT_CURRENCY": "VND",
+		"DEMO_VND_PER_USD": "26000"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "551ecd73608b4785a148bd357f9076e1",
+			"localConnectionString": "postgresql://localhost:5432/shop_cafe"
+		}
+	]
+}

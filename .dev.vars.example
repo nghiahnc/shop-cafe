@@ -1,0 +1,13 @@
+# Copy server-only values from .env.cloudflare.local; never commit real credentials.
+APP_RUNTIME=cloudflare
+AUTH_URL=http://127.0.0.1:8787
+AUTH_SECRET=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+PASSWORD_SERVICE_URL=
+PASSWORD_SERVICE_SECRET=
+AWS_ENDPOINT_URL_S3=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=us-east-2
+UPLOAD_BUCKET=cafe-uploads

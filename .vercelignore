@@ -1,0 +1,16 @@
+.env*
+.dev.vars*
+.neon
+.agents
+.open-next
+.wrangler
+.next
+artifacts
+tests
+db
+functions
+scripts
+neon.ts
+wrangler.jsonc
+open-next.config.ts
+*.log

@@ -1,0 +1,3 @@
+import AdminShell from '@/modules/admin/ui/AdminShell';import AdminPromotions from '@/modules/promotions/ui/AdminPromotions';import {requireAdmin} from '@/modules/auth/session';import {listPromotions} from '@/modules/promotions/service';
+export const dynamic='force-dynamic';
+export default async function PromotionsPage(){await requireAdmin();const promotions=await listPromotions();return <AdminShell title="Khuyến mãi"><div className="page-heading"><div><span className="eyebrow">CHƯƠNG TRÌNH ƯU ĐÃI</span><h1>Khuyến mãi.</h1><p>Mã nhập tay và ưu đãi tự động; mỗi đơn dùng mức giảm tốt nhất.</p></div></div><AdminPromotions promotions={promotions}/></AdminShell>;}
