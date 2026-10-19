@@ -1,21 +1,28 @@
-# Kiểm tra trang chủ — 15/10/2026
+# Nhà Cà Phê — nghiệm thu giao diện 19/10/2026
 
-## Kết quả
+## Thay đổi
 
-- `npm run build`: thành công, gồm TypeScript và toàn bộ route hiện có.
-- Trình duyệt ở 375×812, 768×1024, 1024×900, 1440×900: không tràn ngang. Mobile dùng một cột, tablet/desktop dùng ba cột cho danh mục và sản phẩm.
-- Tám ảnh trong nội dung tải thành công sau khi cuộn toàn trang; không có lỗi console trong phiên kiểm tra.
-- Menu: mở đúng, focus vào nút đóng, Tab/Shift+Tab quay vòng trong menu, Escape đóng và trả focus về nút mở; cuộn nền được khóa và khôi phục.
-- Menu Matcha dẫn tới `/products?category=matcha`, bộ lọc chọn đúng và hiển thị ba món Matcha.
-- Thêm Espresso Nguyên Bản: giỏ từ 0 lên 1, có thông báo thành công. Sang giỏ và checkout giữ đúng size M, đá 0%, đường 100%, giá 39.000 ₫. Đã xóa món thử để giỏ trở về 0; không tạo đơn.
-- Render component với tồn 0 và tồn 3: món hết hiển thị “Hết món” và khóa nút; món còn hàng cho phép thêm. Cả hai kiểm tra thành công, không sửa database.
-- GET không có session: trang chủ hiển thị liên kết Đăng nhập. `/products`, bộ lọc Matcha, chi tiết món, `/login`, `/register` trả HTTP 200.
-- Trang giỏ/checkout giữ header và giao diện cũ khi đi từ trang chủ mới; stylesheet mới chỉ dùng selector của CSS Module.
-- Tương phản chữ thường trên nền kem: espresso 14,95:1, muted 5,43:1, nhãn/liên kết nâu 5,87:1. Đồng 4,28:1 chỉ dùng cho tiêu đề lớn, biểu tượng và focus; chữ nhỏ hover dùng nâu đậm.
-- Đã kiểm tra mã cho reduced motion: CSS tắt chuyển động và bỏ trạng thái ẩn; Reveal không khởi tạo khi người dùng bật giảm chuyển động và hiển thị nội dung khi preference thay đổi. Không đổi thiết lập chuyển động của hệ điều hành trong quá trình QA.
+- Tham khảo bố cục [Louis Vuitton Việt Nam](https://vn.louisvuitton.com/vie-vn/homepage): header giữa, banner tràn ngang, danh mục, ảnh bộ sưu tập, sản phẩm tuyển chọn, câu chuyện và footer.
+- Thống nhất giao diện khách hàng từ trang chủ đến catalog, chi tiết, giỏ, checkout, đăng nhập/đăng ký và lịch sử đơn; header/footer dùng chung trong dự án.
+- Menu, tìm kiếm và bộ lọc dùng native dialog; chuyển trạng thái header theo cuộn; bộ lọc giữ GET và tham số hiện có.
+- Dùng Next Image trên các ảnh cửa hàng; ảnh đầu trang preload, ảnh còn lại lazy; bổ sung hai ảnh editorial với nguồn tại ASSET_SOURCES.md.
+- Giỏ/checkout có trạng thái khôi phục dữ liệu trước khi hiện giỏ trống. Giữ giao diện quản trị, API, schema và định dạng giỏ hàng.
 
-## Ảnh nghiệm thu
+## Kiểm thử đã thực hiện
 
-- `desktop.jpg`, `desktop-full.jpg`: 1440×900, ảnh đầu trang và toàn trang.
-- `mobile.jpg`, `mobile-full.jpg`: 375×812, ảnh đầu trang và toàn trang.
-- Ảnh chụp từ dev server; biểu tượng Next.js Dev Tools chỉ xuất hiện trong môi trường phát triển.
+- `npm run build`: PASS, gồm TypeScript và toàn bộ route.
+- Browser với viewport được xác nhận thực tế: 375×812, 768×900, 1024×900, 1440×900. Kiểm tra trang chủ, danh sách, chi tiết, giỏ trống, đăng nhập và đăng ký; không tràn ngang, không chồng header, không ảnh lỗi, mỗi trang có một h1 sau khi tải.
+- Checkout với giỏ có sản phẩm: PASS ở bốn chiều rộng trên, không tràn ngang.
+- Bộ lọc danh mục và tìm kiếm không có kết quả: PASS; tham số URL và kết quả đúng. Danh mục hoa hồng trả 2 sản phẩm, Matcha 3 món, phụ kiện thời trang 2 sản phẩm trong bộ dữ liệu thử tương ứng.
+- Menu: focus ban đầu ở nút đóng, Escape đóng và trả focus về nút menu, khóa/khôi phục cuộn nền. Native dialog và trap Tab/Shift+Tab giới hạn focus bên trong.
+- API trên database thử: route công khai, đăng nhập đúng/sai, phân quyền khách/quản trị, checkout/lịch sử, đơn nhiều sản phẩm, hủy và hoàn tồn kho đều PASS. Trang admin trả 200 và không có boutique frame.
+- Đã chọn Latte size L, đá 50%, đường 30%, số lượng 2. Giỏ giữ đúng tùy chọn; áp CAFE10 giảm 10%, chọn nhận tại quán, đặt và hủy đơn qua UI. API xác nhận tùy chọn lưu trong đơn và hoàn tồn kho.
+- Các thay đổi không sửa endpoint, schema, Stripe/webhook hoặc mã nghiệp vụ quản trị. Không chạy migration/seed hay đặt/hủy đơn trên production trong đợt QA này.
+- Reduced motion được kiểm tra trong source CSS; không thay thiết lập hệ điều hành. Không thực hiện lại thanh toán Stripe trong đợt chỉnh UI; giữ luồng sandbox đang cấu hình trên website.
+
+## Môi trường và bằng chứng
+
+- Build production chạy bằng Next start tại localhost:3101/3102/3103, tương ứng ba database PostgreSQL thử riêng `boutique_qa_*_20261019` trên 127.0.0.1.
+- Credentials và log kiểm thử nằm ngoài Git. Các đơn thử qua UI đã hủy; fixture API đã dọn trong database thử.
+- `desktop.jpg`: trang chủ 1440×900; `mobile.jpg`: trang chủ 375×812. Ảnh chụp catalog/chi tiết/checkout và JSON kiểm thử bổ sung lưu cục bộ, không commit.
+- Kết quả tổng hợp của ba shop: 72 tổ hợp trang/kích thước và 12 kiểm tra checkout có sản phẩm đều không tràn ngang.

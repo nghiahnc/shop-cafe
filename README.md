@@ -96,3 +96,7 @@ Giữ nguyên ghi công và giấy phép của ảnh, font, thư viện khi sử
 Mã OpenNext/Hyperdrive vẫn được giữ trong repo; bản demo chính dùng Vercel. Bản Workers thử nghiệm trước đây chưa đạt yêu cầu CPU Free, xem [báo cáo](artifacts/cloudflare/QA.md). Không cần cấu hình Workers để chạy Node local.
 
 `PASSWORD_SERVICE_URL` và `PASSWORD_SERVICE_SECRET` để trống khi chạy Node local (bcrypt chạy tại chỗ). Workers cần Function xử lý mật khẩu và Hyperdrive riêng; mẫu biến preview ở `.dev.vars.example`. Không chia sẻ `.dev.vars` hoặc file secret sinh ra. `neon.ts`/`wrangler.jsonc` là cấu hình tham khảo; thay ID tài nguyên bằng project của bạn trước khi triển khai.
+
+## Giao diện editorial — 19/10/2026
+
+Cửa hàng dùng bố cục tham khảo Louis Vuitton, với nội dung riêng của thương hiệu: ảnh chiến dịch tràn ngang, header giữa, menu/tìm kiếm/bộ lọc dạng dialog và các trang mua hàng đồng bộ. Thành phần dùng chung nằm trong `components/boutique`, CSS giới hạn trong `.boutique`; `/admin` giữ giao diện hiện có. Xem [kết quả kiểm thử và ảnh desktop/mobile](artifacts/homepage/QA.md) và [nguồn ảnh](ASSET_SOURCES.md).

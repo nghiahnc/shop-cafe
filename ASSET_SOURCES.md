@@ -29,3 +29,12 @@ Các ô danh mục và sản phẩm dùng lại ảnh đã ghi nguồn bên dư�
 | product-10.jpg | Latte Art Nhà Mộc | James Collington | [Pexels](https://www.pexels.com/photo/artistic-coffee-cup-with-latte-art-and-iced-beverage-33309769/) |
 | product-11.jpg | Croissant Bơ Pháp | Yuliya Duzhaya | [Pexels](https://www.pexels.com/photo/fresh-croissants-and-coffee-on-a-cafe-table-38885492/) |
 | product-12.jpg | Set Sáng Thảnh Thơi | Arda Kaykısız | [Pexels](https://www.pexels.com/photo/delicious-iced-coffee-with-pastries-at-cafe-29353008/) |
+
+## Bộ ảnh editorial — 19/10/2026
+
+Ảnh Pexels lưu cục bộ, bản rộng tối đa 2200px, theo [giấy phép Pexels](https://www.pexels.com/license/). Tác giả được ghi trên trang nguồn. Ảnh chiến dịch ưu tiên tải; các ảnh khác tải chậm, có kích thước và crop responsive.
+
+| Tệp | Nguồn |
+| --- | --- |
+| editorial-hero.jpg | [Pexels #14900158](https://www.pexels.com/photo/cups-of-coffee-with-latte-art-on-white-table-14900158/) |
+| editorial-story.jpg | [Pexels #5864239](https://www.pexels.com/photo/people-working-in-a-modern-cafe-5864239/) |
