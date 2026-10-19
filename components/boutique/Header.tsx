@@ -1,4 +1,5 @@
 'use client';
+import useReady from '@/components/boutique/useReady';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -11,6 +12,7 @@ import Icon from './Icon';
 
 export type HeaderProps = { user: { name: string; role: string } | null; categories: { name: string; slug?: string }[]; hero?: boolean };
 export default function Header({ user, categories, hero = false }: HeaderProps) {
+  const ready = useReady();
   const pathname = usePathname();
   const [panel, setPanel] = useState<'menu' | 'search' | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +29,7 @@ export default function Header({ user, categories, hero = false }: HeaderProps) 
   const account = user ? '/account/orders' : '/login';
   return <>
     <header className={`bt-header ${hero ? 'bt-header-hero' : ''} ${hero && !scrolled ? 'bt-header-clear' : ''}`}>
-      <div className="bt-header-left"><button type="button" className="bt-header-control" aria-label="Mở menu" aria-haspopup="dialog" aria-expanded={panel === 'menu'} onClick={() => setPanel('menu')}><Icon name="menu"/><span>Menu</span></button><button type="button" className="bt-header-control" aria-label="Tìm kiếm" aria-haspopup="dialog" aria-expanded={panel === 'search'} onClick={() => setPanel('search')}><Icon name="search"/><span>Tìm kiếm</span></button></div>
+      <div className="bt-header-left"><button type="button" className="bt-header-control" disabled={!ready} aria-label="Mở menu" aria-haspopup="dialog" aria-expanded={panel === 'menu'} onClick={() => setPanel('menu')}><Icon name="menu"/><span>Menu</span></button><button type="button" className="bt-header-control" disabled={!ready} aria-label="Tìm kiếm" aria-haspopup="dialog" aria-expanded={panel === 'search'} onClick={() => setPanel('search')}><Icon name="search"/><span>Tìm kiếm</span></button></div>
       <Link href="/" className="bt-wordmark" aria-label={`${brand.name} — Trang chủ`}>{brand.wordmark}</Link>
       <div className="bt-header-right"><Link href={account} className="bt-header-control" aria-label={user ? `Tài khoản của ${user.name}` : 'Đăng nhập'}><Icon name="user"/><span>{user ? user.name.split(' ').at(-1) : 'Tài khoản'}</span></Link><Link href="/cart" className="bt-header-control bt-bag" aria-label={`Giỏ hàng có ${count} sản phẩm`}><Icon name="bag"/><span className="bt-count" aria-live="polite" aria-atomic="true">{count}</span></Link></div>
     </header>

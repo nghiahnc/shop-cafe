@@ -20,6 +20,8 @@
 - Các thay đổi không sửa endpoint, schema, Stripe/webhook hoặc mã nghiệp vụ quản trị. Không chạy migration/seed hay đặt/hủy đơn trên production trong đợt QA này.
 - Reduced motion được kiểm tra trong source CSS; không thay thiết lập hệ điều hành. Không thực hiện lại thanh toán Stripe trong đợt chỉnh UI; giữ luồng sandbox đang cấu hình trên website.
 
+- Kiểm tra production phát hiện tương tác trước hydration có thể bị mất; đã thêm trạng thái sẵn sàng cho menu, bộ lọc, form auth và nút/tùy chọn mua hàng. Các control chỉ bật sau khi client khởi tạo.
+
 ## Môi trường và bằng chứng
 
 - Build production chạy bằng Next start tại localhost:3101/3102/3103, tương ứng ba database PostgreSQL thử riêng `boutique_qa_*_20261019` trên 127.0.0.1.
